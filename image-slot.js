@@ -425,8 +425,8 @@
     ':host([data-attribution-error]) .ring{display:none}' +
     '.ring{display:none !important}' +
     '.empty{display:none !important}' +
-    '.frame{background:transparent !important}' +
-    ':host{background:transparent !important}';
+    '.frame{background:#FFFBF2 !important}' +
+    ':host{background:#FFFBF2 !important}';
 
   const icon =
     '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
