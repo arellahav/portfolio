@@ -95,7 +95,7 @@
   <section id="about" style="padding: 220px 48px 110px; border-top: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 56px; flex-wrap: wrap; position: relative; z-index: 2; width: 1020px; padding-top: 110px; scroll-margin-top: 90px">
     <div style="width: 220px; flex-shrink: 0;">
       
-    <image-slot id="about-photo" shape="rounded" radius="16" style="width: 220px; height: 260px;" placeholder="Profile photo"></image-slot></div>
+    <image-slot id="about-photo" shape="rounded" radius="16" style="width: 220px; height: 260px;" placeholder="Profile photo" src="./assets/about-photo.png"></image-slot></div>
     <div style="flex: 1; min-width: 320px;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.6); margin: 0 0 20px;">About</h2>
       <p style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.4vw, 28px); font-weight: 500; line-height: 1.5; margin: 0;">
@@ -172,7 +172,7 @@ class Component extends DCLogic {
     const projects = this._projectsRaw().map((p, i) => ({
       ...p,
       index: String(i + 1).padStart(2, '0'),
-      videoSrc: './videos/' + p.slotId + '.mp4',
+      videoSrc: p.slotId === 'p-rosh' ? './videos/p-rosh-loop.mp4' : './videos/' + p.slotId + '.mp4',
       imgSrc: p.slotId === 'p-wearher' ? './assets/wearher-main.png' : '',
       videoDisplay: this.state.videoOk[p.slotId] ? 'block' : 'none',
       videoRef: (el) => this._attachVideo(el, p.slotId),
