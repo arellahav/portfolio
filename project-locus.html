@@ -22,7 +22,7 @@
   <a href="index.html#top" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">AREL LAHAV</a>
   <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
     <a href="index.html#top" style="opacity: 0.5;">Home</a>
-    <a href="index.html#top" style="opacity: 0.5;">Work</a>
+    <a href="work.html" style="opacity: 0.5;">Work</a>
     <a href="index.html#about" style="opacity: 0.5;">About</a>
   </nav>
 </header>
@@ -69,7 +69,7 @@
       </div>
       <video ref="{{ videoRef2 }}" src="./videos/p-locus-comp1.mp4" autoplay="" muted="" loop="" playsinline="" style="width: 100%; display: block; margin-top: 0;"></video>
       <div id="locus-flow" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden; margin-top: 64px; scroll-margin-top: 0px; background: #FFFBF2;">
-        <iframe ref="{{ iframeRef }}" src="https://player.vimeo.com/video/1213192092?loop=1&muted=1&autoplay=0&title=0&byline=0&portrait=0&controls=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen" title="LOCUS flow"></iframe>
+        <iframe src="https://player.vimeo.com/video/1213192092?autoplay=1&loop=1&muted=1&background=1&controls=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen" title="LOCUS flow"></iframe>
       </div>
     </div>
   </div>
@@ -119,52 +119,11 @@ class Component extends DCLogic {
     }
     this._videoObserver.observe(el);
   }
-  _observeIframe(el) {
-    if (!el || el._observed) return;
-    el._observed = true;
-    el._ready = false;
-    el._pendingIntersecting = false;
-    const send = (method) => {
-      if (el.contentWindow) el.contentWindow.postMessage(JSON.stringify({ method }), '*');
-    };
-    if (!this._msgListener) {
-      this._msgListener = (e) => {
-        if (!e.data) return;
-        try {
-          const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-          if (data.event === 'ready' && e.source) {
-            const iframes = document.querySelectorAll('iframe');
-            iframes.forEach((f) => {
-              if (f.contentWindow === e.source) {
-                f._ready = true;
-                if (f._pendingIntersecting) send.call(this, 'play');
-              }
-            });
-          }
-        } catch (err) {}
-      };
-      window.addEventListener('message', this._msgListener);
-    }
-    if (!this._iframeObserver) {
-      this._iframeObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const target = entry.target;
-          target._pendingIntersecting = entry.isIntersecting;
-          if (!target.contentWindow) return;
-          const msg = entry.isIntersecting ? 'play' : 'pause';
-          if (msg === 'pause' || target._ready) {
-            target.contentWindow.postMessage(JSON.stringify({ method: msg }), '*');
-          }
-        });
-      }, { threshold: 0.9 });
-    }
-    this._iframeObserver.observe(el);
-  }
+  _observeIframe(el) {}
   renderVals() {
     return {
       videoRef1: (el) => this._observeVideo(el),
       videoRef2: (el) => this._observeVideo(el),
-      iframeRef: (el) => this._observeIframe(el),
     };
   }
 }

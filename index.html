@@ -27,7 +27,7 @@
     <a href="#top" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">AREL LAHAV</a>
     <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
       <a href="#top" style="opacity: {{ navHomeOpacity }}; font-weight: {{ navHomeWeight }};" style-hover="opacity:1">Home</a>
-      <a href="#top" style="opacity: 0.5;" style-hover="opacity:1">Work</a>
+      <a href="work.html" style="opacity: 0.5;" style-hover="opacity:1">Work</a>
       <a href="#about" style="opacity: {{ navAboutOpacity }}; font-weight: {{ navAboutWeight }};" style-hover="opacity:1">About</a>
     </nav>
   </header>
@@ -173,7 +173,7 @@ class Component extends DCLogic {
       ...p,
       index: String(i + 1).padStart(2, '0'),
       videoSrc: p.slotId === 'p-rosh' ? './videos/p-rosh-loop.mp4' : './videos/' + p.slotId + '.mp4',
-      imgSrc: p.slotId === 'p-wearher' ? './assets/wearher-main.png' : '',
+      imgSrc: p.slotId === 'p-wearher' ? './assets/wearher-main.png' : (p.slotId === 'p-rosh' ? './assets/rosh-cover.png' : ''),
       videoDisplay: this.state.videoOk[p.slotId] ? 'block' : 'none',
       videoRef: (el) => this._attachVideo(el, p.slotId),
       videoMuted: !this.state.videoUnmuted[p.slotId],
