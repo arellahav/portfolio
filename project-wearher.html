@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Konstant Grotesk'; src: local('Konstant Grotesk'); }
+    @font-face { font-family: 'Almoni'; src: local('Almoni DL AAA Light'), local('Almoni Light'), local('Almoni'); font-weight: 300; }
+    html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFBF2; color: oklch(0.15 0.005 80); }
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.7; }
+  </style>
+</helmet>
+
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #FFFBF2; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 44px; box-sizing: border-box;">
+  <a href="index.html#top" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">AREL LAHAV</a>
+  <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
+    <a href="index.html#top" style="opacity: 0.5;">Home</a>
+    <a href="index.html#top" style="opacity: 0.5;">Work</a>
+    <a href="index.html#about" style="opacity: 0.5;">About</a>
+  </nav>
+</header>
+
+<section style="display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.4fr) minmax(0, 0.7fr); position: relative; margin-top: 71px; min-height: calc(100vh - 71px);">
+  <!-- COL 1 -->
+  <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
+    <div style="position: sticky; top: 110px; z-index: 3;">
+      <h1 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.1vw, 34px); font-weight: 600; line-height: 1.05; margin: 0; letter-spacing: -0.01em; word-break: normal; overflow-wrap: normal; text-transform: uppercase;">wearher</h1>
+      <span style="display: block; margin-top: 8px; font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">UX/UI</span>
+    </div>
+    <div style="margin-top: 48px;">
+      <div style="width: 100%; aspect-ratio: 4/3; overflow: hidden;">
+        <image-slot id="wearher-thumb" shape="rect" placeholder="Detail shot"></image-slot>
+      </div>
+    </div>
+    <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; display: flex; justify-content: space-between; align-items: baseline; background: #FFFBF2; padding-top: 16px;">
+      <span style="font-size: 14px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Year</span>
+      <span style="font-size: 15px; font-weight: 600; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">'26</span>
+    </div>
+  </div>
+
+  <!-- COL 2 -->
+  <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
+    <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -1px;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 32px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;">
+        "Wearher" is a weather and schedule based styling app that double functions as a critique of the Influencer Trap. Inspired by Kim Kardashian's marketing tactics, it explores how everyday lifestyle advice and FOMO are leveraged to drive seamless consumer spending.
+      </p>
+    </div>
+    <div style="position: relative; z-index: 2; background: #FFFBF2;">
+      <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden;">
+        <iframe ref="{{ iframeRef }}" src="https://player.vimeo.com/video/1213233597?loop=1&amp;muted=1&amp;autoplay=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0" style="{{ iframeStyle }}" allow="autoplay; fullscreen" title="wearher flow"></iframe>
+      </div>
+      <img src="./assets/wearher-onboarding.png" alt="Onboarding flow" style="width: 100%; display: block; margin-top: 44px;">
+      <img src="./assets/wearher-case.png" alt="Wireframe and design system" style="width: 100%; display: block;">
+    </div>
+  </div>
+
+  <!-- COL 3 -->
+  <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
+    <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2;">
+      <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenge</h2>
+      <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
+        Modern influencer culture blurs the line between personal utility and aggressive marketing, transforming daily habits into calculated shopping triggers.
+      </p>
+      <div style="margin-top: 44px;">
+        <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Solution</h2>
+        <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
+          A conceptual weather app inspired by Kim Kardashian's marketing tactics. It uses daily weather and schedule updates as a pretext to push new outfits, leveraging FOMO to turn routine decisions into sales opportunities.
+        </p>
+      </div>
+    </div>
+    <div style="position: fixed; bottom: 24px; right: 44px; z-index: 50; text-align: right; background: #FFFBF2; padding-top: 16px;">
+      <span style="display: block; font-size: 13px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Next project</span>
+      <a href="./project-aura.html" style="display: block; font-size: 15px; font-weight: 600; margin-top: 4px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">AURA</a>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;videoOffsetY&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: -22, &quot;min&quot;: -80, &quot;max&quot;: 40, &quot;step&quot;: 1, &quot;unit&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Flow video position&quot;},
+  &quot;videoScale&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 155, &quot;min&quot;: 100, &quot;max&quot;: 260, &quot;step&quot;: 1, &quot;unit&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Flow video position&quot;}
+}">
+class Component extends DCLogic {
+  _observeIframe(el) {
+    if (!el || el._observed) return;
+    el._observed = true;
+    el._ready = false;
+    el._pendingIntersecting = false;
+    if (!this._msgListener) {
+      this._msgListener = (e) => {
+        if (!e.data) return;
+        try {
+          const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+          if (data.event === 'ready' && e.source) {
+            document.querySelectorAll('iframe').forEach((f) => {
+              if (f.contentWindow === e.source) {
+                f._ready = true;
+                if (f._pendingIntersecting && f.contentWindow) {
+                  f.contentWindow.postMessage(JSON.stringify({ method: 'play' }), '*');
+                }
+              }
+            });
+          }
+        } catch (err) {}
+      };
+      window.addEventListener('message', this._msgListener);
+    }
+    if (!this._iframeObserver) {
+      this._iframeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target;
+          target._pendingIntersecting = entry.isIntersecting;
+          if (!target.contentWindow) return;
+          const msg = entry.isIntersecting ? 'play' : 'pause';
+          if (msg === 'pause' || target._ready) {
+            target.contentWindow.postMessage(JSON.stringify({ method: msg }), '*');
+          }
+        });
+      }, { threshold: 0.5 });
+    }
+    this._iframeObserver.observe(el);
+  }
+  renderVals() {
+    const top = this.props.videoOffsetY ?? -30;
+    const height = this.props.videoScale ?? 165;
+    return {
+      iframeRef: (el) => this._observeIframe(el),
+      iframeStyle: 'position:absolute; top:' + top + '%; left:0; width:100%; height:' + height + '%; border:0;',
+    };
+  }
+}
+</script>
+</body>
+</html>

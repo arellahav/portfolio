@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  @font-face { font-family: 'Almoni'; src: local('Almoni DL AAA Light'), local('Almoni Light'), local('Almoni'); font-weight: 300; }
+  body { margin: 0; }
+  ::selection { background: oklch(0.55 0.11 55); color: oklch(0.99 0.005 90); }
+  a { color: inherit; text-decoration: none; }
+</style>
+</helmet>
+
+<div dir="ltr" style="font-family: 'Almoni', 'Inter', sans-serif; background: #FFFBF2; color: oklch(0.15 0.005 80); width: 100%; position: relative;">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 100; background: #FFFBF2; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 44px;">
+    <a href="#top" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">AREL LAHAV</a>
+    <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
+      <a href="#top" style="opacity: {{ navHomeOpacity }}; font-weight: {{ navHomeWeight }};" style-hover="opacity:1">Home</a>
+      <a href="#top" style="opacity: 0.5;" style-hover="opacity:1">Work</a>
+      <a href="#about" style="opacity: {{ navAboutOpacity }}; font-weight: {{ navAboutWeight }};" style-hover="opacity:1">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO + WORK: 3-column grid -->
+  <section id="top" style="display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.4fr) minmax(0, 0.7fr); position: relative; z-index: 2; min-height: calc(100vh + 1200px);">
+    <!-- COL 1 -->
+    <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;">
+      <div style="position: sticky; top: 110px; z-index: 3;">
+        <h1 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(34px, 4vw, 56px); font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -0.01em;">Hello!<br>I'm Arel.</h1>
+      </div>
+      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; padding-top: 60px;">
+        <span style="font-size: 15px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Based in Israel</span>
+      </div>
+    </div>
+
+    <!-- COL 2 -->
+    <div style="border-left: 1px solid oklch(0.15 0.005 80 / 0.15); border-right: 1px solid oklch(0.15 0.005 80 / 0.15); padding: 40px 44px 0;">
+      <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -192px; padding-bottom: 208px;">
+        <p style="font-style: italic; font-size: 24px; font-weight: 300; line-height: 1.45; margin: 0 0 36px; color: oklch(0.15 0.005 80); height: 142px; font-family: 'Almoni', sans-serif;">Multidisciplinary UX/UI designer, drawn to motion, precise typography, and ideas translated into simple, clear experiences.</p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; margin: 0; height: 28px">Selected work</h2>
+          <span style="font-size: 15px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">(08)</span>
+        </div>
+      </div>
+      <div style="position: relative; z-index: 2; background: #FFFBF2;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="7">
+        <a href="{{ p.href }}" style="display: block; color: inherit; text-decoration: none;">
+          <div style="text-align: right; font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; margin-top: 18px;">'{{ p.year }}</div>
+          <div style="width: 100%; aspect-ratio: {{ p.frameAspect }}; margin: 8px 0 8px; overflow: hidden; position: relative;">
+            <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.name }} shot" src="{{ p.imgSrc }}"></image-slot>
+            <video ref="{{ p.videoRef }}" src="{{ p.videoSrc }}" muted="{{ p.videoMuted }}" loop="" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: {{ p.videoFit }}; object-position: center top; background: {{ p.videoBg }}; display: {{ p.videoDisplay }};"></video>
+            <sc-if value="{{ p.hasVimeo }}" hint-placeholder-val="{{ false }}">
+              <iframe src="{{ p.vimeoSrc }}" style="position: absolute; top: 50%; left: 50%; width: 135%; height: 135%; border: 0; transform: translate(-50%, -50%);" allow="autoplay; fullscreen" title="{{ p.name }}"></iframe>
+            </sc-if>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 18px;">
+            <span style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; text-transform: uppercase;">{{ p.name }}</span>
+            <span style="font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.55); white-space: nowrap; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; text-align: right;">{{ p.category }}</span>
+          </div>
+        </a>
+      </sc-for>
+      <div style="height: 92px"></div>
+      </div>
+    </div>
+
+    <!-- COL 3 -->
+    <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;">
+      <div style="z-index: 3;">
+        
+      </div>
+      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; text-align: right; background: #FFFBF2; white-space: nowrap;">
+        <a href="mailto:arellahav@gmail.com" style="font-size: 15px; font-weight: 600; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; color: #86827E" style-hover="opacity:0.7">arellahav@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO VIDEO -->
+  <section style="padding: 0 48px 100px; max-width: 1040px; margin: 0 auto; position: relative; z-index: 2; height: 0px">
+    
+    
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding: 220px 48px 110px; border-top: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 56px; flex-wrap: wrap; position: relative; z-index: 2; width: 1020px; padding-top: 110px; scroll-margin-top: 90px">
+    <div style="width: 220px; flex-shrink: 0;">
+      
+    <image-slot id="about-photo" shape="rounded" radius="16" style="width: 220px; height: 260px;" placeholder="Profile photo"></image-slot></div>
+    <div style="flex: 1; min-width: 320px;">
+      <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.6); margin: 0 0 20px;">About</h2>
+      <p style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.4vw, 28px); font-weight: 500; line-height: 1.5; margin: 0;">
+        Visual Communication student at HIT, focusing on bridging strategic thinking with minimalist design to tell visual stories that inspire. Dedicated to creating purposeful digital experiences, I am always open to new collaborations and projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding: 130px 48px 60px; border-top: 1px solid oklch(0.15 0.005 80 / 0.15); color: #FFFBF2; text-align: center; background-color: #FFFBF2">
+    <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 75px; font-weight: 500; color: #00000099; margin: 0 0 28px">Let's talk</h2>
+    <a href="mailto:arellahav@gmail.com" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; display: block; font-size: 16px; font-weight: 500; line-height: 1.15; margin: 0 0 36px; letter-spacing: -0.01em; color: #666461" style-hover="color:#EDB9B7">arellahav@gmail.com</a>
+    <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; font-size: 16px; font-weight: 500; color: #FFFBF2a6; margin-bottom: 90px;">
+      <span style="background-color: #FFFBF2; color: #000000A6">052-8059596</span>
+      <span style="background-color: #FFFBF2; color: #000000A6">Giv'atayim, Israel</span>
+      <a href="https://www.linkedin.com/in/arel-lahav-8ab116326" target="_blank" style-hover="color:#EDB9B7" style="background-color: #FFFBF2; color: #000000A6">LinkedIn</a>
+      <a href="https://www.instagram.com/wheeluo.design?igsh=MWg3azJhNmt0a2QzdA%3D%3D" target="_blank" style-hover="color:#EDB9B7" style="color: #000000A6">Instagram</a>
+    </div>
+    <div style="padding-top: 24px; border-top: 1px solid #FFFBF226; display: flex; justify-content: space-between; font-size: 14px; color: #FFFBF266; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
+      <span style="color: #57575766">© 2026 Arel Lahav</span>
+      
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { videoOk: {}, videoUnmuted: {}, activeSection: 'top' };
+  componentDidMount() {
+    const sections = ['top', 'about'].map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length) return;
+    this._sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) this.setState({ activeSection: entry.target.id });
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    sections.forEach((s) => this._sectionObserver.observe(s));
+  }
+  _attachVideo(el, slotId) {
+    if (!el) return;
+    const shouldMute = !this.state.videoUnmuted[slotId];
+    el.muted = shouldMute;
+    el.defaultMuted = shouldMute;
+    el.volume = shouldMute ? 0 : 1;
+    el.addEventListener('loadeddata', () => { this.setState(s => ({ videoOk: { ...s.videoOk, [slotId]: true } })); });
+    el.addEventListener('error', () => this.setState(s => ({ videoOk: { ...s.videoOk, [slotId]: false } })));
+    if (!this._videoObserver) {
+      this._videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.play().catch(() => {});
+          else entry.target.pause();
+        });
+      }, { threshold: 0.25 });
+    }
+    this._videoObserver.observe(el);
+  }
+  _toggleSound(slotId) {
+    this.setState(s => ({ videoUnmuted: { ...s.videoUnmuted, [slotId]: !s.videoUnmuted[slotId] } }));
+  }
+  _projectsRaw() {
+    return [
+      { name: 'LOCUS', category: 'UI/UX & Complex Systems', year: "26", slotId: 'p-locus' },
+      { name: 'wearher', category: 'UX/UI', year: "26", slotId: 'p-wearher' },
+      { name: 'AURA', category: 'UX/UI · Vibe Code', year: "26", slotId: 'p-aura' },
+      { name: 'rosh', category: 'Brand Identity', year: "26", slotId: 'p-rosh' },
+      { name: 'My Brilliant Friend', category: 'Motion Design · Book Opening', year: "26", slotId: 'p-mbf' },
+      { name: 'We Didn\u2019t Know', category: 'Motion · Kinetic Typography', year: "26", slotId: 'p-wdk' },
+      { name: 'Choosing Angles', category: '2D Animation & Character Design', year: "26", slotId: 'p-angles' },
+    ];
+  }
+  renderVals() {
+    const isAbout = this.state.activeSection === 'about';
+    const projects = this._projectsRaw().map((p, i) => ({
+      ...p,
+      index: String(i + 1).padStart(2, '0'),
+      videoSrc: './videos/' + p.slotId + '.mp4',
+      imgSrc: p.slotId === 'p-wearher' ? './assets/wearher-main.png' : '',
+      videoDisplay: this.state.videoOk[p.slotId] ? 'block' : 'none',
+      videoRef: (el) => this._attachVideo(el, p.slotId),
+      videoMuted: !this.state.videoUnmuted[p.slotId],
+      videoFit: (p.slotId === 'p-wdk' || p.slotId === 'p-angles') ? 'contain' : 'cover',
+      videoBg: (p.slotId === 'p-wdk' || p.slotId === 'p-angles') ? '#FFFBF2' : 'transparent',
+      frameAspect: (p.slotId === 'p-wdk' || p.slotId === 'p-angles') ? '16/9' : '4/3',
+      href: p.slotId === 'p-locus' ? './project-locus.html' : (p.slotId === 'p-wearher' ? './project-wearher.html' : (p.slotId === 'p-rosh' ? './project-rosh.html' : (p.slotId === 'p-mbf' ? './project-my-brilliant-friend.html' : (p.slotId === 'p-aura' ? './project-aura.html' : (p.slotId === 'p-wdk' ? './project-we-didnt-know.html' : (p.slotId === 'p-angles' ? './project-choosing-angles.html' : '#')))))),
+      hasSoundToggle: p.slotId === 'p-mbf',
+      soundIcon: this.state.videoUnmuted[p.slotId] ? '🔊' : '🔇',
+      toggleSound: () => this._toggleSound(p.slotId),
+      hasVimeo: !!p.vimeoId,
+      vimeoSrc: p.vimeoId ? ('https://player.vimeo.com/video/' + p.vimeoId + '?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&dnt=1&quality=1080p') : '',
+    }));
+    return {
+      projects,
+      navHomeOpacity: isAbout ? 0.5 : 1,
+      navHomeWeight: isAbout ? 400 : 700,
+      navAboutOpacity: isAbout ? 1 : 0.5,
+      navAboutWeight: isAbout ? 700 : 400,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
