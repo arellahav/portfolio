@@ -6,6 +6,16 @@
 <script src="./support.js"></script>
 </head>
 <body>
+<div id="mobile-block" style="display:none; position:fixed; inset:0; z-index:9999; background:#FFFBF2; color:oklch(0.15 0.005 80); flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; box-sizing:border-box;">
+  <h1 style="font-family:'Konstant Grotesk','Space Grotesk',sans-serif; font-size:26px; font-weight:600; margin:0 0 16px; letter-spacing:-0.01em;">Best viewed on Desktop</h1>
+  <p style="font-family:'Almoni',sans-serif; font-size:16px; line-height:1.6; max-width:320px; margin:0; color:oklch(0.15 0.005 80 / 0.65);">This portfolio is optimized for desktop viewing. Please open the link on a computer for the full experience.</p>
+</div>
+<style>
+  @media (max-width: 768px) {
+    #mobile-block { display: flex !important; }
+    body > x-dc { display: none !important; }
+  }
+</style>
 <x-dc>
 <helmet>
   <script src="./image-slot.js"></script>
