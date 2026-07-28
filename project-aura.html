@@ -19,8 +19,17 @@
 <x-dc>
 <helmet>
   <style>
-    @font-face { font-family: 'Konstant Grotesk'; src: local('Konstant Grotesk'); }
-    @font-face { font-family: 'Almoni'; src: local('Almoni DL AAA Light'), local('Almoni Light'), local('Almoni'); font-weight: 300; }
+    @font-face { font-family: 'Konstant Grotesk'; src: url('./fonts/KonstantGrotesk.otf') format('opentype'); font-weight: 400 700; }
+    @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-thin.otf') format('opentype'); font-weight: 100; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultralight.otf') format('opentype'); font-weight: 200; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-light.otf') format('opentype'); font-weight: 300; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-regular.otf') format('opentype'); font-weight: 400; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-medium.otf') format('opentype'); font-weight: 500; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-demibold.otf') format('opentype'); font-weight: 600; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-bold.otf') format('opentype'); font-weight: 700; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultrabold.otf') format('opentype'); font-weight: 800; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-black.otf') format('opentype'); font-weight: 900; }
+  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultrablack.otf') format('opentype'); font-weight: 950; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background: #FFFBF2; color: oklch(0.15 0.005 80); }
     a { color: inherit; text-decoration: none; }
@@ -58,7 +67,7 @@
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -1px;">
-      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.35; margin: 0 56px 20px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.35; margin: 0 56px 20px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;">
         Aura is a digital application designed to complement psychiatric treatment by providing real time distress support and clinical management between sessions. Developed using Vibe Code, the application enhances the therapeutic process through personal progress tracking and immediate assistance during moments of anxiety.
       </p>
     </div>
@@ -79,12 +88,12 @@
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenge</h2>
-      <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
+      <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', 'Inter', sans-serif;">
         Mental health care lacks continuity between scheduled sessions, leaving patients without immediate support during acute anxiety and without seamless progress tracking outside the clinic.
       </p>
       <div style="margin-top: 44px;">
         <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Solution</h2>
-        <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
+        <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', 'Inter', sans-serif;">
           Aura bridges this gap by providing real-time distress support and continuous progress tracking, creating an accessible, all-in-one companion for both patients and clinicians.
         </p>
       </div>
