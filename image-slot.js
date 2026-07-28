@@ -423,7 +423,10 @@
     '.attr-error .cap{max-width:92%;font-weight:500;letter-spacing:.01em}' +
     ':host([data-attribution-error]) .attr-error{display:flex}' +
     ':host([data-attribution-error]) .ring{display:none}' +
-    '.ring{display:none !important}';
+    '.ring{display:none !important}' +
+    '.empty{display:none !important}' +
+    '.frame{background:transparent !important}' +
+    ':host{background:transparent !important}';
 
   const icon =
     '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
