@@ -35,6 +35,7 @@
     a { color: inherit; text-decoration: none; }
     a:hover { opacity: 0.7; }
   @media (hover: hover) { * { cursor: none !important; } header, header * { cursor: none !important; } }
+  @keyframes fadeUpIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </helmet>
 
@@ -56,7 +57,7 @@
 <section style="display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.4fr) minmax(0, 0.7fr); position: relative; margin-top: 71px; min-height: calc(100vh - 71px);">
   <!-- COL 1 -->
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
-    <div style="position: sticky; top: 110px; z-index: 3; opacity: 0; animation: fadeUpIn 0.7s ease 0.1s forwards;">
+    <div style="position: sticky; top: 110px; z-index: 3; animation: fadeUpIn 0.7s ease 0.1s both;">
       <h1 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(16px, 1.7vw, 28px); font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -0.01em; word-break: normal; overflow-wrap: normal; text-transform: uppercase;">Choosing Angles</h1>
       <span style="display: block; margin-top: 8px; font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">2D Animation & Character Design</span>
     </div>
@@ -74,7 +75,7 @@
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -1px;">
-      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; opacity: 0; animation: fadeUpIn 0.7s ease 0.2s forwards;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         An animation project exploring the personal meaning of creativity. Through a vibrant character and dynamic transitions, the piece illustrates how "choosing your angle" can transform a simple scene into something unexpected.
       </p>
     </div>
@@ -85,7 +86,7 @@
 
   <!-- COL 3 -->
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
-    <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2; opacity: 0; animation: fadeUpIn 0.7s ease 0.3s forwards;">
+    <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenge</h2>
       <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', 'Inter', sans-serif;">
         Visually defining the abstract concept of "What is creativity to me?" without relying on design clichés.

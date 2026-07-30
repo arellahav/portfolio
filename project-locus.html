@@ -35,6 +35,7 @@
     a { color: inherit; text-decoration: none; }
     a:hover { opacity: 0.7; }
   @media (hover: hover) { * { cursor: none !important; } header, header * { cursor: none !important; } }
+  @keyframes fadeUpIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </helmet>
 
@@ -56,7 +57,7 @@
 <section style="display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.4fr) minmax(0, 0.7fr); position: relative; margin-top: 71px;">
   <!-- COL 1 -->
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
-    <div style="position: sticky; top: 110px; z-index: 3; opacity: 0; animation: fadeUpIn 0.7s ease 0.1s forwards;">
+    <div style="position: sticky; top: 110px; z-index: 3; animation: fadeUpIn 0.7s ease 0.1s both;">
       <h1 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.1vw, 36px); font-weight: 600; line-height: 1.05; margin: 0; letter-spacing: -0.01em; word-break: normal; overflow-wrap: normal; text-transform: uppercase;">LOCUS</h1>
       <span style="display: block; margin-top: 8px; font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">UI/UX &amp; Complex Systems</span>
     </div>
@@ -74,7 +75,7 @@
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -1px;">
-      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; opacity: 0; animation: fadeUpIn 0.7s ease 0.2s forwards;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         A smart system for archaeologists that accompanies them from field excavation to office research. Optimized for cross-platform workflows, the system is designed partly as an iPad application for mobile field documentation and partly as a desktop interface for in-depth office research, enabling seamless artifact management while mapping every discovery directly to its geographical location.
       </p>
       <a href="#locus-flow" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
@@ -102,7 +103,7 @@
 
   <!-- COL 3 -->
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
-    <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2; opacity: 0; animation: fadeUpIn 0.7s ease 0.3s forwards;">
+    <div style="position: sticky; top: 110px; z-index: 3; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 100%; word-break: normal; overflow-wrap: normal;">The Challenges</h2>
       <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 10px;">
         <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', 'Inter', sans-serif; font-weight: 500;">Data Map Disconnect</li>
