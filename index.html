@@ -34,52 +34,66 @@
   @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-black.otf') format('opentype'); font-weight: 900; }
   @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultrablack.otf') format('opentype'); font-weight: 950; }
   @font-face { font-family: 'Konstant Grotesk'; src: url('./fonts/KonstantGrotesk.otf') format('opentype'); font-weight: 400 700; }
+  html { scroll-behavior: smooth; }
   body { margin: 0; }
   ::selection { background: oklch(0.55 0.11 55); color: oklch(0.99 0.005 90); }
   a { color: inherit; text-decoration: none; }
+  @media (hover: hover) { * { cursor: none !important; } header, header * { cursor: none !important; } }
+  @keyframes lineGrowH { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes lineGrowV { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes fadeUpIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </helmet>
+
+<div ref="{{ cursorRef }}" style="position: fixed; top: 0; left: 0; width: 100px; height: 100px; border-radius: 50%; border: 4px solid #FFFBF2; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: difference; will-change: transform; display: none; align-items: center; justify-content: center; box-sizing: border-box;">
+  <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H9M18 6V15" stroke="#FFFBF2" stroke-width="2.8" stroke-linecap="square"></path></svg>
+</div>
+
+<div id="nav-dot-cursor" style="position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #15130F; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); display: none;"></div>
 
 <div dir="ltr" style="font-family: 'Almoni', 'Inter', sans-serif; background: #FFFBF2; color: oklch(0.15 0.005 80); width: 100%; position: relative;">
 
   <!-- NAV -->
-  <header style="position: sticky; top: 0; z-index: 100; background: #FFFBF2; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 44px;">
+  <header style="position: sticky; top: 0; z-index: 100; background: #FFFBF2; border-bottom: none; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 44px; opacity: 0; animation: fadeUpIn 0.6s ease 0.05s forwards;">
     <a href="#top" style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">AREL LAHAV</a>
     <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">
       <a href="#top" style="opacity: {{ navHomeOpacity }}; font-weight: {{ navHomeWeight }};" style-hover="opacity:1">Home</a>
       <a href="work.html" style="opacity: 0.5;" style-hover="opacity:1">Work</a>
       <a href="#about" style="opacity: {{ navAboutOpacity }}; font-weight: {{ navAboutWeight }};" style-hover="opacity:1">About</a>
     </nav>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: oklch(0.15 0.005 80 / 0.15); transform: scaleX(0); transform-origin: left; animation: lineGrowH 0.7s ease 0.05s forwards;"></div>
   </header>
 
   <!-- HERO + WORK: 3-column grid -->
   <section id="top" style="display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.4fr) minmax(0, 0.7fr); position: relative; z-index: 2; min-height: calc(100vh + 1200px);">
     <!-- COL 1 -->
     <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box;">
-      <div style="position: sticky; top: 110px; z-index: 3;">
+      <div style="position: sticky; top: 110px; z-index: 3; opacity: 0; animation: fadeUpIn 0.7s ease 1.3s forwards;">
         <h1 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(34px, 4vw, 56px); font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -0.01em;">Hello!<br>I'm Arel.</h1>
       </div>
-      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; padding-top: 60px;">
+      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; padding-top: 60px; opacity: 0; animation: fadeUpIn 0.7s ease 1.45s forwards;">
         <span style="font-size: 15px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Based in Israel</span>
       </div>
     </div>
 
     <!-- COL 2 -->
-    <div style="border-left: 1px solid oklch(0.15 0.005 80 / 0.15); border-right: 1px solid oklch(0.15 0.005 80 / 0.15); padding: 40px 44px 0;">
+    <div style="position: relative; border-left: none; border-right: none; padding: 40px 44px 0;">
+      <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: oklch(0.15 0.005 80 / 0.15); transform: scaleY(0); transform-origin: top; animation: lineGrowV 0.8s ease 0.8s forwards;"></div>
+      <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 1px; background: oklch(0.15 0.005 80 / 0.15); transform: scaleY(0); transform-origin: top; animation: lineGrowV 0.8s ease 0.95s forwards;"></div>
       <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; margin-bottom: -192px; padding-bottom: 208px;">
-        <p style="font-style: italic; font-size: 24px; font-weight: 300; line-height: 1.45; margin: 0 0 36px; color: oklch(0.15 0.005 80); height: 142px; font-family: 'Almoni', 'Inter', sans-serif;">Multidisciplinary UX/UI designer, drawn to motion, precise typography, and ideas translated into simple, clear experiences.</p>
-        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <p style="font-style: italic; font-size: 24px; font-weight: 300; line-height: 1.45; margin: 0 0 36px; color: oklch(0.15 0.005 80); height: 142px; font-family: 'Almoni', sans-serif; opacity: 0; animation: fadeUpIn 0.7s ease 1.55s forwards;">Multidisciplinary UX/UI designer, drawn to motion, precise typography, and ideas translated into simple, clear experiences.</p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; opacity: 0; animation: fadeUpIn 0.7s ease 1.7s forwards;">
           <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; margin: 0; height: 28px">Selected work</h2>
           <span style="font-size: 15px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">(08)</span>
         </div>
       </div>
       <div style="position: relative; z-index: 2; background: #FFFBF2;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="7">
-        <a href="{{ p.href }}" style="display: block; color: inherit; text-decoration: none;">
+        <a href="{{ p.href }}" style="display: block; color: inherit; text-decoration: none; opacity: 0; animation: fadeUpIn 0.6s ease {{ p.introDelay }}s forwards;">
           <div style="text-align: right; font-size: 14px; font-weight: 500; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; margin-top: 18px;">'{{ p.year }}</div>
           <div style="width: 100%; aspect-ratio: {{ p.frameAspect }}; margin: 8px 0 8px; overflow: hidden; position: relative;">
             <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.name }} shot" src="{{ p.imgSrc }}"></image-slot>
-            <sc-if value="{{ p.videoSrc }}" hint-placeholder-val="{{ false }}">
+            <sc-if value="{{ p.hasVideo }}" hint-placeholder-val="{{ false }}">
               <video ref="{{ p.videoRef }}" src="{{ p.videoSrc }}" muted="{{ p.videoMuted }}" loop="" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: {{ p.videoFit }}; object-position: center top; background: {{ p.videoBg }}; display: {{ p.videoDisplay }};"></video>
             </sc-if>
             <sc-if value="{{ p.hasVimeo }}" hint-placeholder-val="{{ false }}">
@@ -101,7 +115,7 @@
       <div style="z-index: 3;">
         
       </div>
-      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; text-align: right; background: #FFFBF2; white-space: nowrap;">
+      <div style="margin-top: auto; position: sticky; bottom: 24px; z-index: 3; text-align: right; background: #FFFBF2; white-space: nowrap; opacity: 0; animation: fadeUpIn 0.7s ease 1.45s forwards;">
         <a href="mailto:arellahav@gmail.com" style="font-size: 15px; font-weight: 600; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; color: #86827E" style-hover="opacity:0.7">arellahav@gmail.com</a>
       </div>
     </div>
@@ -147,6 +161,26 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { videoOk: {}, videoUnmuted: {}, activeSection: 'top' };
+  _setupCursor(el) {
+    if (!el || this._cursorEl) return;
+    this._cursorEl = el;
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    el.style.display = 'flex';
+    const header = document.querySelector('header');
+    const dot = document.getElementById('nav-dot-cursor');
+    if (header) {
+      header.addEventListener('mouseenter', () => { el.style.display = 'none'; if (dot) dot.style.display = 'block'; });
+      header.addEventListener('mouseleave', () => { el.style.display = 'flex'; if (dot) dot.style.display = 'none'; });
+    }
+    if (dot) {
+      window.addEventListener('mousemove', (e) => {
+        dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      });
+    }
+    window.addEventListener('mousemove', (e) => {
+      el.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+  }
   componentDidMount() {
     const sections = ['top', 'about'].map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
@@ -164,6 +198,7 @@ class Component extends DCLogic {
     el.defaultMuted = shouldMute;
     el.volume = shouldMute ? 0 : 1;
     el.addEventListener('loadeddata', () => { this.setState(s => ({ videoOk: { ...s.videoOk, [slotId]: true } })); });
+    el.addEventListener('ended', () => { el.currentTime = 0; el.play().catch(() => {}); });
     el.addEventListener('error', () => this.setState(s => ({ videoOk: { ...s.videoOk, [slotId]: false } })));
     if (!this._videoObserver) {
       this._videoObserver = new IntersectionObserver((entries) => {
@@ -194,7 +229,9 @@ class Component extends DCLogic {
     const projects = this._projectsRaw().map((p, i) => ({
       ...p,
       index: String(i + 1).padStart(2, '0'),
-      videoSrc: p.slotId === 'p-rosh' ? '' : './videos/' + p.slotId + '.mp4',
+      introDelay: (2.5 + i * 0.08).toFixed(2),
+      hasVideo: p.slotId !== 'p-wearher' && p.slotId !== 'p-rosh',
+      videoSrc: (p.slotId === 'p-wearher' || p.slotId === 'p-rosh') ? '' : './videos/' + p.slotId + '.mp4',
       imgSrc: p.slotId === 'p-wearher' ? './assets/wearher-main.png' : (p.slotId === 'p-rosh' ? './assets/rosh-cover.png' : ''),
       videoDisplay: this.state.videoOk[p.slotId] ? 'block' : 'none',
       videoRef: (el) => this._attachVideo(el, p.slotId),
@@ -210,6 +247,7 @@ class Component extends DCLogic {
       vimeoSrc: p.vimeoId ? ('https://player.vimeo.com/video/' + p.vimeoId + '?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&dnt=1&quality=1080p') : '',
     }));
     return {
+      cursorRef: (el) => this._setupCursor(el),
       projects,
       navHomeOpacity: isAbout ? 0.5 : 1,
       navHomeWeight: isAbout ? 400 : 700,
