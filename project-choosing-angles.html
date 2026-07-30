@@ -72,7 +72,7 @@
         An animation project exploring the personal meaning of creativity. Through a vibrant character and dynamic transitions, the piece illustrates how "choosing your angle" can transform a simple scene into something unexpected.
       </p>
     </div>
-    <div style="position: relative; z-index: 2; background: #FFFBF2;">
+    <div style="position: relative; z-index: 10; background: #FFFBF2;">
       <video ref="{{ videoRef }}" src="./videos/p-angles.mp4" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 16/9; display: block; object-fit: contain; background: #FFFBF2;"></video>
     </div>
   </div>
@@ -103,6 +103,7 @@ class Component extends DCLogic {
   _observeVideo(el) {
     if (!el || el._observed) return;
     el._observed = true;
+    el.loop = true;
     el.muted = false;
     if (!this._observer) {
       this._observer = new IntersectionObserver((entries) => {

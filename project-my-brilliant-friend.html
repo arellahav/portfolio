@@ -72,7 +72,7 @@
         An animated book opening for Elena Ferrante's My Brilliant Friend. The project was developed from original styleframes created in Adobe Illustrator and animated using AI tools integrated with After Effects.
       </p>
     </div>
-    <div style="position: relative; z-index: 2; background: #FFFBF2;">
+    <div style="position: relative; z-index: 10; background: #FFFBF2;">
       <video ref="{{ videoRef }}" src="./videos/p-mbf.mp4" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 16/9; display: block; object-fit: cover; background: #FFFBF2;"></video>
       <img src="./assets/mbf-workflow.png" alt="Synopsis, moodboard, illustration frames" style="width: 100%; display: block;">
     </div>
@@ -104,6 +104,7 @@ class Component extends DCLogic {
   _observeVideo(el) {
     if (!el || el._observed) return;
     el._observed = true;
+    el.loop = true;
     el.muted = false;
     if (!this._observer) {
       this._observer = new IntersectionObserver((entries) => {

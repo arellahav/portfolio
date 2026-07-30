@@ -72,8 +72,8 @@
         Rosh is a frozen alcohol pop-up brand that was born only for the beach and stays at the beach. The product is an alcoholic ice pop, available in three flavors: Arak watermelon, peach, and mint; Gin plum, berries, strawberry, and lychee; and Tequila pineapple, mango, and chili. The vibe of the Tel Aviv beach at eye level, music, sun, friends, and matkot.
       </p>
     </div>
-    <div style="position: relative; z-index: 2; background: #FFFBF2;">
-      <video ref="{{ videoRef }}" src="./videos/p-rosh-loop.mp4" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 4/3; display: block; object-fit: cover; background: #FFFBF2;"></video>
+    <div style="position: relative; z-index: 10; background: #FFFBF2;">
+      <video ref="{{ videoRef }}" src="./videos/p-rosh-loop.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 4/3; display: block; object-fit: cover; background: #FFFBF2;"></video>
       <div style="display: flex; flex-direction: column;">
         <img src="./assets/rosh-03.png" alt="Logo guidelines" style="width: 100%; display: block;">
         <img src="./assets/rosh-04.png" alt="Color palette" style="width: 100%; display: block;">
@@ -112,7 +112,12 @@ class Component extends DCLogic {
   _observeVideo(el) {
     if (!el || el._observed) return;
     el._observed = true;
+    el.loop = true;
     el.muted = false;
+    const tryPlay = () => { el.play().catch(() => {}); };
+    el.addEventListener('loadeddata', tryPlay);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') tryPlay();
+    else document.addEventListener('DOMContentLoaded', tryPlay);
     if (!this._observer) {
       this._observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

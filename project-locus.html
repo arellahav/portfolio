@@ -73,7 +73,7 @@
       </p>
       <a href="#locus-flow" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
     </div>
-    <div style="position: relative; z-index: 2; background: #FFFBF2;">
+    <div style="position: relative; z-index: 10; background: #FFFBF2;">
       <video ref="{{ videoRef1 }}" src="./videos/p-locus.mp4" muted="" loop="" playsinline="" style="width: 100%; display: block; margin-bottom: 0;"></video>
       <div style="display: flex; flex-direction: column;">
         <img src="./assets/locus-01.png" alt="The Concept" style="width: 100%; display: block;">
@@ -125,6 +125,7 @@ class Component extends DCLogic {
   _observeVideo(el) {
     if (!el || el._observed) return;
     el._observed = true;
+    el.loop = true;
     el.muted = true;
     el.defaultMuted = true;
     el.addEventListener('ended', () => { el.currentTime = 0; el.play().catch(() => {}); });
@@ -142,6 +143,7 @@ class Component extends DCLogic {
   _observeIframe(el) {
     if (!el || el._observed) return;
     el._observed = true;
+    el.loop = true;
     el._ready = false;
     el._pendingIntersecting = false;
     if (!this._msgListener) {

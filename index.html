@@ -194,6 +194,7 @@ class Component extends DCLogic {
   }
   _attachVideo(el, slotId) {
     if (!el) return;
+    el.loop = true;
     const shouldMute = !this.state.videoUnmuted[slotId];
     el.muted = shouldMute;
     el.defaultMuted = shouldMute;
