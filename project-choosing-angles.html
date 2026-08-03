@@ -73,7 +73,9 @@
       </p>
     </div>
     <div style="position: relative; z-index: 10; background: #FFFBF2 !important; transform: translateZ(0); -webkit-transform: translateZ(0); min-height: 100vh;">
-      <video ref="{{ videoRef }}" src="./videos/p-angles.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 16/9; display: block; object-fit: contain; background: #FFFBF2;"></video>
+      <div style="position: relative;" style-hover="{{ soundBtnHoverStyle }}"><video ref="{{ videoRef }}" src="./videos/p-angles.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 16/9; display: block; object-fit: contain; background: #FFFBF2;"></video>
+      <button onClick="{{ toggleSound }}" style="position: absolute; bottom: 12px; right: 12px; z-index: 4; width: 36px; height: 36px; border-radius: 50%; border: none; background: oklch(0.15 0.005 80 / 0.55); color: #FFFBF2; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 15px; opacity: 0; transition: opacity 0.2s ease;" style-hover="opacity:1">{{ soundIcon }}</button>
+      </div>
     </div>
   </div>
 
@@ -100,23 +102,60 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+  state = { soundOn: false };
+  _svgOn() { return React.createElement('svg', { width: 15, height: 15, viewBox: '0 0 24 24', fill: 'none' },
+    React.createElement('path', { d: 'M4 9V15H8L13 20V4L8 9H4Z', fill: 'currentColor' }),
+    React.createElement('path', { d: 'M16.5 8.5C17.5 9.5 18 10.7 18 12C18 13.3 17.5 14.5 16.5 15.5', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round' }),
+    React.createElement('path', { d: 'M19 6C20.6 7.6 21.5 9.7 21.5 12C21.5 14.3 20.6 16.4 19 18', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round' })
+  ); }
+  _svgOff() { return React.createElement('svg', { width: 15, height: 15, viewBox: '0 0 24 24', fill: 'none' },
+    React.createElement('path', { d: 'M4 9V15H8L13 20V4L8 9H4Z', fill: 'currentColor' }),
+    React.createElement('path', { d: 'M16 9L21 14M21 9L16 14', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round' })
+  ); }
+  _toggleSound() {
+    this.setState((s) => {
+      const next = !s.soundOn;
+      if (this._videoEl) { this._videoEl.muted = !next; if (next) this._videoEl.play().catch(() => {}); }
+      return { soundOn: next };
+    });
+  }
   _observeVideo(el) {
+    this._videoEl = el;
     if (!el || el._observed) return;
     el._observed = true;
     el.loop = true;
-    el.muted = false;
+    el.muted = true;
+    if (!window.__userInteracted) {
+      const unlock = () => { window.__userInteracted = true; document.querySelectorAll('video[data-want-sound]').forEach((v) => { if (v._inView) v.muted = false; }); window.removeEventListener('click', unlock); window.removeEventListener('touchstart', unlock); };
+      window.addEventListener('click', unlock, { once: true });
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    }
+    el.setAttribute('data-want-sound', '1');
+    el._inView = false;
     if (!this._observer) {
       this._observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) { entry.target.muted = false; entry.target.play().catch(() => {}); }
-          else entry.target.pause();
+          entry.target._inView = entry.isIntersecting;
+          if (entry.isIntersecting) {
+            entry.target.muted = false;
+            entry.target.play().then(() => { this.setState({ soundOn: true }); }).catch(() => {
+              entry.target.muted = true;
+              entry.target.play().catch(() => {});
+            });
+          } else {
+            entry.target.pause();
+          }
         });
       }, { threshold: 0.6 });
     }
     this._observer.observe(el);
   }
   renderVals() {
-    return { videoRef: (el) => this._observeVideo(el) };
+    return {
+      videoRef: (el) => this._observeVideo(el),
+      soundIcon: this.state.soundOn ? this._svgOn() : this._svgOff(),
+      toggleSound: () => this._toggleSound(),
+    };
   }
 }
 </script>
