@@ -67,14 +67,14 @@
 
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
-    <div style="position: relative; background: #FFFBF2;">
+    <div style="position: sticky; top: 110px; background: #FFFBF2; margin-bottom: -1px; isolation: isolate;">
       <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         A smart system for archaeologists that accompanies them from field excavation to office research. Optimized for cross-platform workflows, the system is designed partly as an iPad application for mobile field documentation and partly as a desktop interface for in-depth office research, enabling seamless artifact management while mapping every discovery directly to its geographical location.
       </p>
-      <a href="#locus-flow" onClick="{{ goToFlow }}" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
+      <a href="#locus-flow" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
     </div>
     <div style="position: relative; z-index: 5; background: #FFFBF2;">
-      <video ref="{{ videoRef1 }}" src="./videos/p-locus.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; display: block; margin-bottom: 0;"></video>
+      <video ref="{{ videoRef1 }}" src="./videos/p-locus.mp4" muted="" loop="" playsinline="" style="width: 100%; display: block; margin-bottom: 0;"></video>
       <div style="display: flex; flex-direction: column;">
         <img src="./assets/locus-01.png" alt="The Concept" style="width: 100%; display: block;">
         <img src="./assets/locus-02.png" alt="Interviews" style="width: 100%; display: block;">
@@ -87,7 +87,7 @@
         <img src="./assets/locus-09.png" alt="Sitemap" style="width: 100%; display: block;">
         <img src="./assets/locus-10.png" alt="UI screens" style="width: 100%; display: block;">
       </div>
-      <video ref="{{ videoRef2 }}" src="./videos/p-locus-comp1.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; display: block; margin-top: 0;"></video>
+      <video ref="{{ videoRef2 }}" src="./videos/p-locus-comp1.mp4" muted="" loop="" playsinline="" style="width: 100%; display: block; margin-top: 0;"></video>
       <div id="locus-flow" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden; margin-top: 64px; scroll-margin-top: 0px; background: #FFFBF2;">
         <iframe ref="{{ iframeRef }}" src="https://player.vimeo.com/video/1213192092?loop=1&muted=1&autoplay=0&title=0&byline=0&portrait=0&controls=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen" title="LOCUS flow"></iframe>
       </div>
@@ -96,7 +96,7 @@
 
   <!-- COL 3 -->
   <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
-    <div style="position: sticky; top: 110px; background: #FFFBF2; z-index: 1; isolation: isolate; animation: fadeUpIn 0.7s ease 0.3s both; width: 100%; box-sizing: border-box;">
+    <div style="position: relative; z-index: 3; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both; width: 100%; box-sizing: border-box;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 100%; word-break: normal; overflow-wrap: normal;">The Challenges</h2>
       <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 10px;">
         <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Data Map Disconnect</li>
@@ -178,31 +178,15 @@ class Component extends DCLogic {
             target.contentWindow.postMessage(JSON.stringify({ method: msg }), '*');
           }
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.9 });
     }
     this._iframeObserver.observe(el);
-    this._iframeEl = el;
-  }
-  _goToFlow(e) {
-    e.preventDefault();
-    const target = document.getElementById('locus-flow');
-    if (!target) return;
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    const tryPlay = () => {
-      const el = this._iframeEl;
-      if (!el || !el.contentWindow) return;
-      el.contentWindow.postMessage(JSON.stringify({ method: 'play' }), '*');
-    };
-    setTimeout(tryPlay, 500);
-    setTimeout(tryPlay, 1000);
-    setTimeout(tryPlay, 1600);
   }
   renderVals() {
     return {
       videoRef1: (el) => this._observeVideo(el),
       videoRef2: (el) => this._observeVideo(el),
       iframeRef: (el) => this._observeIframe(el),
-      goToFlow: (e) => this._goToFlow(e),
     };
   }
 }
