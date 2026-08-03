@@ -73,7 +73,7 @@
       </p>
       <a href="#locus-flow" onClick="{{ goToFlow }}" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
     </div>
-    <div style="position: relative; z-index: 5; background: #FFFBF2 !important;">
+    <div style="position: relative; z-index: 5; background: #FFFBF2;">
       <video ref="{{ videoRef1 }}" src="./videos/p-locus.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; display: block; margin-bottom: 0;"></video>
       <div style="display: flex; flex-direction: column;">
         <img src="./assets/locus-01.png" alt="The Concept" style="width: 100%; display: block;">
@@ -95,25 +95,26 @@
   </div>
 
   <!-- COL 3 -->
-  <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
+  <div style="padding: 40px 44px; height: 100%; box-sizing: border-box; position: relative; min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both; width: 100%; box-sizing: border-box;">
-      <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenges</h2>
-      <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 6px;">
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Data Map Disconnect</li>
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Lack of the Full Picture</li>
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Artificial Hierarchy</li>
+      <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 100%; word-break: normal; overflow-wrap: normal;">The Challenges</h2>
+      <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 10px;">
+        <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Data Map Disconnect</li>
+        <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Lack of the Full Picture</li>
+        <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Artificial Hierarchy</li>
       </ul>
-      <div style="margin-top: 32px;">
-        <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Solutions</h2>
-        <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 6px;">
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Map as Primary Navigation</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Real Time Visualization</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Rooms as Core Units</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">AI Entry</li>
+      <div style="margin-top: 44px;">
+        <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); max-width: 100%; word-break: normal; overflow-wrap: normal;">The Solutions</h2>
+        <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 10px;">
+          <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Map as Primary Navigation</li>
+          <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Real Time Visualization</li>
+          <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">Rooms as Core Units</li>
+          <li style="font-size: 15px; line-height: 1.5; color: oklch(0.15 0.005 80 / 0.8); font-family: 'Almoni', sans-serif; font-weight: 500;">AI Entry</li>
         </ul>
       </div>
-      </div>
-    <div style="position: sticky; bottom: 24px; z-index: 50; text-align: right; background: #FFFBF2; padding-top: 16px; margin-top: auto;">
+      <div style="height: 400px;"></div>
+    </div>
+    <div style="position: sticky; top: calc(100% - 24px - 60px); z-index: 50; text-align: right; background: #FFFBF2; padding-top: 16px;">
       <span style="display: block; font-size: 13px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Next project</span>
       <a href="./project-wearher.html" style="display: block; font-size: 15px; font-weight: 600; margin-top: 4px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">wearher</a>
     </div>
