@@ -66,13 +66,13 @@
   </div>
 
   <!-- COL 2 -->
-  <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
+  <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0; position: relative; isolation: isolate;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2;">
       <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         An animation project exploring the personal meaning of creativity. Through a vibrant character and dynamic transitions, the piece illustrates how "choosing your angle" can transform a simple scene into something unexpected.
       </p>
     </div>
-    <div style="position: relative; z-index: 10; background: #FFFBF2 !important; min-height: 100vh;">
+    <div style="position: relative; z-index: 10; background: #FFFBF2 !important; transform: translateZ(0); -webkit-transform: translateZ(0); min-height: 100vh;">
       <video ref="{{ videoRef }}" src="./videos/p-angles.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; aspect-ratio: 16/9; display: block; object-fit: contain; background: #FFFBF2;"></video>
     </div>
   </div>
