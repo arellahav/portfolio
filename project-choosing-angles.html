@@ -125,23 +125,21 @@ class Component extends DCLogic {
     el._observed = true;
     el.loop = true;
     el.muted = true;
-    if (!window.__userInteracted) {
-      const unlock = () => { window.__userInteracted = true; document.querySelectorAll('video[data-want-sound]').forEach((v) => { if (v._inView) v.muted = false; }); window.removeEventListener('click', unlock); window.removeEventListener('touchstart', unlock); };
-      window.addEventListener('click', unlock, { once: true });
-      window.addEventListener('touchstart', unlock, { once: true, passive: true });
-    }
-    el.setAttribute('data-want-sound', '1');
-    el._inView = false;
     if (!this._observer) {
       this._observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          entry.target._inView = entry.isIntersecting;
           if (entry.isIntersecting) {
-            entry.target.muted = false;
-            entry.target.play().then(() => { this.setState({ soundOn: true }); }).catch(() => {
-              entry.target.muted = true;
+            if (!entry.target._autoTried) {
+              entry.target._autoTried = true;
+              entry.target.muted = false;
+              entry.target.play().then(() => { this.setState({ soundOn: true }); }).catch(() => {
+                entry.target.muted = true;
+                entry.target.play().catch(() => {});
+              });
+            } else {
+              entry.target.muted = !this.state.soundOn;
               entry.target.play().catch(() => {});
-            });
+            }
           } else {
             entry.target.pause();
           }
