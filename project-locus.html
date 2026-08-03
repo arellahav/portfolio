@@ -67,11 +67,11 @@
 
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
-    <div style="position: sticky; top: 110px; background: #FFFBF2; margin-bottom: -1px; isolation: isolate;">
+    <div style="position: relative; background: #FFFBF2;">
       <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         A smart system for archaeologists that accompanies them from field excavation to office research. Optimized for cross-platform workflows, the system is designed partly as an iPad application for mobile field documentation and partly as a desktop interface for in-depth office research, enabling seamless artifact management while mapping every discovery directly to its geographical location.
       </p>
-      <a href="#locus-flow" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
+      <a href="#locus-flow" onClick="{{ goToFlow }}" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
     </div>
     <div style="position: relative; z-index: 5; background: #FFFBF2;">
       <video ref="{{ videoRef1 }}" src="./videos/p-locus.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" style="width: 100%; display: block; margin-bottom: 0;"></video>
@@ -178,15 +178,31 @@ class Component extends DCLogic {
             target.contentWindow.postMessage(JSON.stringify({ method: msg }), '*');
           }
         });
-      }, { threshold: 0.9 });
+      }, { threshold: 0.3 });
     }
     this._iframeObserver.observe(el);
+    this._iframeEl = el;
+  }
+  _goToFlow(e) {
+    e.preventDefault();
+    const target = document.getElementById('locus-flow');
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const tryPlay = () => {
+      const el = this._iframeEl;
+      if (!el || !el.contentWindow) return;
+      el.contentWindow.postMessage(JSON.stringify({ method: 'play' }), '*');
+    };
+    setTimeout(tryPlay, 500);
+    setTimeout(tryPlay, 1000);
+    setTimeout(tryPlay, 1600);
   }
   renderVals() {
     return {
       videoRef1: (el) => this._observeVideo(el),
       videoRef2: (el) => this._observeVideo(el),
       iframeRef: (el) => this._observeIframe(el),
+      goToFlow: (e) => this._goToFlow(e),
     };
   }
 }
