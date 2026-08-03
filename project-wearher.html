@@ -35,7 +35,7 @@
     a { color: inherit; text-decoration: none; }
     a:hover { opacity: 0.7; }
   @keyframes fadeUpIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+</style>
 </helmet>
 
 <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #FFFBF2; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 24px 44px; box-sizing: border-box;">
@@ -68,34 +68,35 @@
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2;">
-      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 32px; color: oklch(0.15 0.005 80); font-family: 'Almoni', 'Inter', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 32px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         "Wearher" is a weather and schedule based styling app that double functions as a critique of the Influencer Trap. Inspired by Kim Kardashian's marketing tactics, it explores how everyday lifestyle advice and FOMO are leveraged to drive seamless consumer spending.
       </p>
     </div>
-    <div style="position: relative; z-index: 5; background: #FFFBF2;">
+    <div style="position: relative; z-index: 10; background: #FFFBF2 !important; min-height: 100vh;">
       <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden;">
         <iframe ref="{{ iframeRef }}" src="https://player.vimeo.com/video/1213233597?loop=1&amp;muted=1&amp;autoplay=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0" style="{{ iframeStyle }}" allow="autoplay; fullscreen" title="wearher flow"></iframe>
       </div>
-      <img src="./assets/wearher-onboarding.png" alt="Onboarding flow" style="width: 100%; display: block; margin-top: 44px;">
+      <div style="width: 100%; height: 39px; background: #FFFBF2; display: block"></div>
+      <img src="./assets/wearher-onboarding.png" alt="Onboarding flow" style="width: 100%; display: block;">
       <img src="./assets/wearher-case.png" alt="Wireframe and design system" style="width: 100%; display: block;">
     </div>
   </div>
 
   <!-- COL 3 -->
-  <div style="padding: 40px 44px; height: 100%; box-sizing: border-box; position: relative; min-width: 0;">
+  <div style="padding: 40px 44px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; min-width: 0;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both; width: 100%; box-sizing: border-box;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenge</h2>
-      <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', 'Inter', sans-serif;">
+      <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
         Modern influencer culture blurs the line between personal utility and aggressive marketing, transforming daily habits into calculated shopping triggers.
       </p>
       <div style="margin-top: 44px;">
         <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Solution</h2>
-        <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', 'Inter', sans-serif;">
+        <p style="font-size: 15px; line-height: 1.65; color: oklch(0.15 0.005 80 / 0.65); margin: 0; font-family: 'Almoni', sans-serif;">
           A conceptual weather app inspired by Kim Kardashian's marketing tactics. It uses daily weather and schedule updates as a pretext to push new outfits, leveraging FOMO to turn routine decisions into sales opportunities.
         </p>
       </div>
     </div>
-    <div style="position: sticky; top: calc(100% - 24px - 60px); z-index: 50; text-align: right; background: #FFFBF2; padding-top: 16px;">
+    <div style="position: sticky; bottom: 24px; z-index: 50; text-align: right; background: #FFFBF2; padding-top: 16px; margin-top: auto;">
       <span style="display: block; font-size: 13px; color: oklch(0.15 0.005 80 / 0.5); font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">Next project</span>
       <a href="./project-aura.html" style="display: block; font-size: 15px; font-weight: 600; margin-top: 4px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">AURA</a>
     </div>
