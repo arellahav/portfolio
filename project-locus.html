@@ -8,7 +8,7 @@
 <body>
 <div id="mobile-block" style="display:none; position:fixed; inset:0; z-index:9999; background:#FFFBF2; color:oklch(0.15 0.005 80); flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; box-sizing:border-box;">
   <h1 style="font-family:'Konstant Grotesk','Space Grotesk',sans-serif; font-size:26px; font-weight:600; margin:0 0 16px; letter-spacing:-0.01em;">Best viewed on Desktop</h1>
-  <p style="font-family:'Almoni',sans-serif; font-size:16px; line-height:1.6; max-width:320px; margin:0; color:oklch(0.15 0.005 80 / 0.65);">This portfolio is optimized for desktop viewing. Please open the link on a computer for the full experience.</p>
+  <p style="font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; max-width:320px; margin:0; color:oklch(0.15 0.005 80 / 0.65);">This portfolio is optimized for desktop viewing. Please open the link on a computer for the full experience.</p>
 </div>
 <style>
   @media (max-width: 768px) {
@@ -20,16 +20,8 @@
 <helmet>
   <style>
     @font-face { font-family: 'Konstant Grotesk'; src: url('./fonts/KonstantGrotesk.otf') format('opentype'); font-weight: 400 700; }
-    @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-thin.otf') format('opentype'); font-weight: 100; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultralight.otf') format('opentype'); font-weight: 200; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-light.otf') format('opentype'); font-weight: 300; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-regular.otf') format('opentype'); font-weight: 400; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-medium.otf') format('opentype'); font-weight: 500; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-demibold.otf') format('opentype'); font-weight: 600; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-bold.otf') format('opentype'); font-weight: 700; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultrabold.otf') format('opentype'); font-weight: 800; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-black.otf') format('opentype'); font-weight: 900; }
-  @font-face { font-family: 'Almoni'; src: url('./fonts/almoni-ultrablack.otf') format('opentype'); font-weight: 950; }
+  @font-face { font-family: 'Inter'; src: url('./fonts/inter-variable.ttf') format('truetype-variations'), url('./fonts/inter-variable.ttf') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Inter'; src: url('./fonts/inter-italic-variable.ttf') format('truetype-variations'), url('./fonts/inter-italic-variable.ttf') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
     html { scroll-behavior: smooth; }
   body { margin: 0; background: #FFFBF2; color: oklch(0.15 0.005 80); }
     a { color: inherit; text-decoration: none; }
@@ -68,7 +60,7 @@
   <!-- COL 2 -->
   <div style="padding: 40px 0; box-sizing: border-box; border-right: 1px solid oklch(0.15 0.005 80 / 0.15); min-width: 0; position: relative; isolation: isolate;">
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2;">
-      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Almoni', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
+      <p style="font-style: italic; font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; margin: 0 56px 60px; color: oklch(0.15 0.005 80); font-family: 'Inter', sans-serif;; animation: fadeUpIn 0.7s ease 0.2s both;">
         A smart system for archaeologists that accompanies them from field excavation to office research. Optimized for cross-platform workflows, the system is designed partly as an iPad application for mobile field documentation and partly as a desktop interface for in-depth office research, enabling seamless artifact management while mapping every discovery directly to its geographical location.
       </p>
       <a href="#locus-flow" onClick="{{ goToFlow }}" style="display: inline-flex; margin: 0 56px 32px; background: oklch(0.15 0.005 80); color: #FFFBF2; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif;">To flow</a>
@@ -99,17 +91,17 @@
     <div style="position: sticky; top: 110px; z-index: 1; background: #FFFBF2; animation: fadeUpIn 0.7s ease 0.3s both; width: 100%; box-sizing: border-box;">
       <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Challenges</h2>
       <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 6px;">
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Data Map Disconnect</li>
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Lack of the Full Picture</li>
-        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Artificial Hierarchy</li>
+        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Data Map Disconnect</li>
+        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Lack of the Full Picture</li>
+        <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Artificial Hierarchy</li>
       </ul>
       <div style="margin-top: 32px;">
         <h2 style="font-family: 'Konstant Grotesk', 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid oklch(0.15 0.005 80 / 0.15);">Solutions</h2>
         <ul style="margin: 0; padding: 0 0 0 18px; list-style: disc; display: flex; flex-direction: column; gap: 6px;">
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Map as Primary Navigation</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Real Time Visualization</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">Rooms as Core Units</li>
-          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Almoni', sans-serif;">AI Entry</li>
+          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Map as Primary Navigation</li>
+          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Real Time Visualization</li>
+          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">Rooms as Core Units</li>
+          <li style="font-size: 15px; line-height: 1.4; color: oklch(0.15 0.005 80 / 0.65); font-family: 'Inter', sans-serif;">AI Entry</li>
         </ul>
       </div>
       </div>
